@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, Response
 import patch_pickle_compat
-from utils import load_models, get_prediction_results
+from utils import load_models, get_prediction_results, is_auth_valid
 
 app = FastAPI()
 
@@ -11,9 +11,16 @@ async def predict(request: Request, response: Response):
   
   try:
     
-    data = await request.json();
+    if not is_auth_valid(request):
+      response.status_code = 401;
+      return {
+        "success": False,
+        "error": {
+          "message": f"Unauthorized",
+        }
+      }
     
-    print (f"data: {data}")
+    data = await request.json();
 
     results = get_prediction_results(data, models)
     
@@ -35,4 +42,4 @@ async def predict(request: Request, response: Response):
       }
     }
   
-  
+# ngrok http http://localhost:8080
