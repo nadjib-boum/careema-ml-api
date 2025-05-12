@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, Response
-import patch_pickle_compat
 import asyncio
+import patch_pickle_compat
 from utils import load_models, get_prediction_results, is_auth_valid
 
 app = FastAPI()
@@ -17,7 +17,7 @@ async def predict(request: Request, response: Response):
       return {
         "success": False,
         "error": {
-          "message": f"Unauthorized",
+          "message": "Unauthorized",
         }
       }
     
@@ -39,7 +39,7 @@ async def predict(request: Request, response: Response):
     return {
       "success": False,
       "error": {
-        "message": f"Prediction failed",
+        "message": "Prediction failed",
       }
     }
   

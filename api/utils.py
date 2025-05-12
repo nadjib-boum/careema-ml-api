@@ -1,10 +1,9 @@
+from dotenv import load_dotenv
 import os
 import cloudpickle as pickle
 import pandas as pd
 import numpy as np
 from fastapi import Request
-from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
@@ -110,10 +109,10 @@ def get_prediction_results (data, models):
             probability = float(prediction)
             
         model_results.append({
-          "model": model_name,
-					"prediction": prediction,
-					"probability": probability,
-				})
+            "model": model_name,
+            "prediction": prediction,
+            "probability": probability,
+        })
         
     if model_results:
         avg_probability = sum([m['probability'] for m in model_results]) / len(model_results)
@@ -140,9 +139,6 @@ def is_auth_valid (request: Request):
         return False
     
     token = auth_header.split("Bearer ")[1]
-    
-    print (f"token: {token}")
-    print (f"AUTH_TOKEN: {AUTH_TOKEN}")
     
     if token != AUTH_TOKEN:
         return False
