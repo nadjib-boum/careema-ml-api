@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request, Response
 import patch_pickle_compat
+import asyncio
 from utils import load_models, get_prediction_results, is_auth_valid
 
 app = FastAPI()
