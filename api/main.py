@@ -43,4 +43,4 @@ async def predict(request: Request, response: Response):
       }
     }
   
-# ngrok http http://localhost:8080
+# ngrok http --url=loyal-factually-ghoul.ngrok-free.app 8000

@@ -3,6 +3,6 @@ __pycache__/
 *$py.class
 
 venv/
-.env/
+api/.env
 cli
 .vercel
