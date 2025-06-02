@@ -4,5 +4,5 @@ __pycache__/
 
 venv/
 api/.env
+api/models/legacy
 cli
-.vercel
