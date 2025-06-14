@@ -7,6 +7,12 @@ app = FastAPI()
 
 models = load_models()
 
+@app.get("/")
+async def test(request: Request, response: Response):
+  return {
+    "success": True,
+  }
+
 @app.post("/predict")
 async def predict(request: Request, response: Response):
   
